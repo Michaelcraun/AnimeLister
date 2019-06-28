@@ -9,6 +9,10 @@
 import UIKit
 
 class HomeViewController: UITabBarController {
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return appTheme.statusBarStyle
+    }
+    
     var mainCoordinator: MainCoordinator?
     
     override func viewDidLoad() {

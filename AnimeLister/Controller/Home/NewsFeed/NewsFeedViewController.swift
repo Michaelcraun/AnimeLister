@@ -9,6 +9,10 @@
 import UIKit
 
 class NewsFeedViewController: UITableViewController {
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return appTheme.statusBarStyle
+    }
+    
     private let reuseID: String = "newsFeedCell"
     private var shouldFetchMore: Bool = false
     private var page: Int = 1

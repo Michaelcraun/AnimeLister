@@ -10,6 +10,10 @@ import UIKit
 import MaterialComponents
 
 class MessagesViewController: UIViewController {
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return appTheme.statusBarStyle
+    }
+    
     private let bottomView: UIView = {
         let view = UIView()
         view.backgroundColor = theme.titleBarColor
@@ -22,24 +26,23 @@ class MessagesViewController: UIViewController {
         return view
     }()
     
-    private let messageField: MDCTextField = {
-        let field = MDCTextField()
-        field.font = theme.textFont
-        field.textColor = theme.textColor
+    private let messageField: ALTextField = {
+        let field = ALTextField()
+        
         return field
     }()
     
     private let sendButton: MDCRaisedButton = {
         let button = MDCRaisedButton()
         button.addTarget(self, action: #selector(sendTapped), for: .touchUpInside)
+        button.backgroundColor = theme.buttonColor
         button.setTitle("Send", for: .normal)
-        button.sizeToFit()
+        button.setTitleFont(theme.buttonFont, for: .normal)
         return button
     }()
     
     private var messagesTableView: UITableView = {
         let view = UITableView()
-        
         return view
     }()
     
@@ -69,6 +72,7 @@ class MessagesViewController: UIViewController {
         messageFieldController.activeColor = appTheme.buttonColor
         messageFieldController.floatingPlaceholderActiveColor = appTheme.placeHolderTextColor
         messageFieldController.inlinePlaceholderFont = appTheme.detailFont
+        messageFieldController.inlinePlaceholderColor = appTheme.placeHolderTextColor
         messageFieldController.normalColor = appTheme.placeHolderTextColor
         messageFieldController.placeholderText = "Send a message..."
         
@@ -113,8 +117,8 @@ class MessagesViewController: UIViewController {
             to: messageContainerView,
             trailing: messageContainerView.trailingAnchor,
             centerY: messageContainerView.centerYAnchor,
-            padding: .init(top: 5, left: 0, bottom: 5, right: 5),
-            size: .init(width: 70, height: 0))
+            padding: .init(top: 0, left: 0, bottom: 0, right: 5),
+            size: .init(width: 80, height: 50))
         
         messageField.anchor(
             to: messageContainerView,

@@ -39,7 +39,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     private func getTheme() {
         // MARK: TEMPORARY
-        LocalStorage.store.set("light", for: .theme)
+        LocalStorage.store.set("dark", for: .theme)
         
         let themeName = LocalStorage.store.get(for: .theme)
         Settings.instance.theme = Theme(themeName)
@@ -54,6 +54,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         barAppearance.isTranslucent = false
         
         let barButtonItemAppearance = UIBarButtonItem.appearance()
+        barButtonItemAppearance.tintColor = Settings.instance.theme.titleBarTintColor
         barButtonItemAppearance.setTitleTextAttributes([NSAttributedString.Key.foregroundColor: UIColor.clear], for: .normal)
     }
 

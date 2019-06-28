@@ -15,7 +15,7 @@ import UIKit
 class NewsFeedCell: UITableViewCell, Themeable {
     private let containerView: UIView = {
         let view = UIView()
-        view.backgroundColor = .white
+        view.backgroundColor = theme.secondaryBackgroundColor
         return view
     }()
     

@@ -61,10 +61,42 @@ enum Theme {
         }
     }
     
+    var recievedMessageColor: UIColor {
+        switch self {
+        case .dark: return UIColor(red: 33 / 255, green: 17 / 255, blue: 150 / 255, alpha: 1.0)
+        case .light: return UIColor(red: 138 / 255, green: 131 / 255, blue: 183 / 255, alpha: 1.0)
+        }
+    }
+    
+    var secondaryBackgroundColor: UIColor {
+        switch self {
+        case .dark: return UIColor(red: 8 / 255, green: 0 / 255, blue: 63 / 255, alpha: 1.0)
+        case .light: return UIColor(red: 150 / 255, green: 140 / 255, blue: 219 / 255, alpha: 1.0)
+        }
+    }
+    
+    var sentMessageTheme: UIColor {
+        switch self {
+        case .dark: return UIColor(red: 12 / 255, green: 0 / 255, blue: 96 / 255, alpha: 1.0)
+        case .light: return UIColor(red: 190 / 255, green: 186 / 255, blue: 217 / 255, alpha: 1.0)
+        }
+    }
+    
     var titleBarColor: UIColor {
         switch self {
         case .dark: return UIColor(red: 8 / 255, green: 3 / 255, blue: 49 / 255, alpha: 1.0)
         case .light: return UIColor(red: 162 / 255, green: 149 / 255, blue: 249 / 255, alpha: 1.0)
+        }
+    }
+    
+    var titleBarTintColor: UIColor {
+        return textColor
+    }
+    
+    var statusBarStyle: UIStatusBarStyle {
+        switch self {
+        case .dark: return .lightContent
+        case .light: return .default
         }
     }
     

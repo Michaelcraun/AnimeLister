@@ -30,6 +30,8 @@ class MessageCell: UITableViewCell, Themeable {
     private let messageLabel: UILabel = {
         let label = UILabel()
         label.font = theme.textFont
+        label.numberOfLines = 0
+        label.sizeToFit()
         label.textColor = theme.textColor
         return label
     }()
@@ -45,26 +47,29 @@ class MessageCell: UITableViewCell, Themeable {
     private var messageTrailing: NSLayoutConstraint!
     private var toUserImageWidth: NSLayoutConstraint!
     private var fromUserImageWidth: NSLayoutConstraint!
+    var shouldShowMessageStatus: Bool = false
     var message: Message?
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
+        self.backgroundColor = .clear
         
         messageContainerView.anchor(
             to: self,
             top: self.topAnchor,
-            padding: .init(top: 5, left: 0, bottom: 0, right: 0))
+            bottom: self.bottomAnchor,
+            padding: .init(top: 5, left: 0, bottom: 5, right: 0))
         
         messageLabel.fillTo(
             messageContainerView,
             withPadding: .init(top: 5, left: 5, bottom: 5, right: 5))
         
-        statusLabel.anchor(
-            to: self,
-            top: messageContainerView.bottomAnchor,
-            trailing: messageContainerView.trailingAnchor,
-            bottom: self.bottomAnchor,
-            padding: .init(top: 5, left: 0, bottom: 0, right: 5))
+//        statusLabel.anchor(
+//            to: self,
+//            top: messageContainerView.bottomAnchor,
+//            trailing: messageContainerView.trailingAnchor,
+//            bottom: self.bottomAnchor,
+//            padding: .init(top: 5, left: 0, bottom: 0, right: 5))
         
         messageLeading = NSLayoutConstraint(
             item: messageContainerView,
@@ -73,7 +78,7 @@ class MessageCell: UITableViewCell, Themeable {
             toItem: self,
             attribute: .leading,
             multiplier: 1.0,
-            constant: 0.0)
+            constant: 5.0)
         
         messageTrailing = NSLayoutConstraint(
             item: messageContainerView,
@@ -82,7 +87,7 @@ class MessageCell: UITableViewCell, Themeable {
             toItem: self,
             attribute: .trailing,
             multiplier: 1.0,
-            constant: 0.0)
+            constant: -5.0)
         
         self.addConstraints([messageLeading, messageTrailing])
     }
@@ -99,10 +104,14 @@ class MessageCell: UITableViewCell, Themeable {
         
         switch message.toUser {
         case currentUser:
-            messageContainerView.backgroundColor = .red
+            messageLeading.constant = 50
+            messageContainerView.backgroundColor = appTheme.recievedMessageColor
         default:
-            messageContainerView.backgroundColor = .green
+            messageTrailing.constant = -50
+            messageContainerView.backgroundColor = appTheme.sentMessageTheme
             statusLabel.text = message.meta.status
         }
+        
+        updateConstraintsIfNeeded()
     }
 }

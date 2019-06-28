@@ -52,6 +52,7 @@ class MessagesUserCell: UITableViewCell, Themeable {
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
+        self.backgroundColor = appTheme.secondaryBackgroundColor
         
         containerView.fillTo(self)
         

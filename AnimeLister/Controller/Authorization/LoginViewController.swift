@@ -10,6 +10,10 @@ import UIKit
 import MaterialComponents
 
 class LoginViewController: UIViewController {
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return appTheme.statusBarStyle
+    }
+    
     private let scrollView: UIScrollView = {
         let view = UIScrollView()
         return view

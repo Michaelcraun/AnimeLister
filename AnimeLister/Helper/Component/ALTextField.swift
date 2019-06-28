@@ -16,6 +16,7 @@ class ALTextField: MDCTextField {
     override init(frame: CGRect) {
         super.init(frame: frame)
         self.font = theme.textFont
+        self.textColor = theme.textColor
     }
     
     required init?(coder aDecoder: NSCoder) {
