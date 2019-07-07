@@ -20,6 +20,7 @@ class MainCoordinator: Coordinator {
     func start() {
         let homeVC = HomeViewController()
         homeVC.mainCoordinator = self
+        
         navigationController.setNavigationBarHidden(false, animated: true)
         navigationController.pushViewController(homeVC, animated: true)
     }

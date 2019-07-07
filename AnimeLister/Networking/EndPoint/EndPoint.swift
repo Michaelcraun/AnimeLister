@@ -9,7 +9,7 @@
 import UIKit
 
 protocol EndPoint {
-    var body: [String : Any]? { get }
+    var body: [String : Any?]? { get }
     var bodyData: Data { get }
     var method: HTTPMethod { get }
     var path: String { get }
@@ -29,7 +29,7 @@ extension EndPoint {
                 bodyData.appendString("Content-Type: image/jpg\r\n\r\n")
                 bodyData.append(image.pngData()!)
                 bodyData.appendString("\r\n")
-            } else {
+            } else if let value = value {
                 bodyData.appendString("Content-Disposition: form-data; name=\"\(key)\"\r\n\r\n")
                 bodyData.appendString("\(value)\r\n")
             }

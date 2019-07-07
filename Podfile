@@ -9,6 +9,7 @@ target 'AnimeLister' do
 
   # Pods for AnimeLister
   pod 'MaterialComponents'
+  pod 'YangMingShan'
 
   target 'AnimeListerTests' do
     inherit! :search_paths

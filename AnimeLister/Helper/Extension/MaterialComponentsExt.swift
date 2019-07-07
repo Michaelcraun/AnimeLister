@@ -21,6 +21,7 @@ extension MDCTextInputControllerOutlined {
             self.activeColor = theme.buttonColor
             self.floatingPlaceholderActiveColor = theme.buttonColor
             self.helperText = ""
+            self.leadingUnderlineLabelTextColor = MDCTextInputControllerOutlined.leadingUnderlineLabelTextColorDefault
             self.normalColor = MDCTextInputControllerOutlined.normalColorDefault
             return
         }

@@ -20,14 +20,16 @@ class NetworkRequest {
         // Configure URL
         let apiURL = NetworkManager.baseURL + endpoint.path
         let url = URL(string: apiURL)
-        let token = LocalStorage.store.get(for: .token)!
         
         // Configure request
         var request = URLRequest(url: url!)
         request.httpBody = endpoint.bodyData
         request.httpMethod = endpoint.method.name
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
-        request.setValue("Bearer " + token, forHTTPHeaderField: "Authorization")
+        
+        if let token = LocalStorage.store.get(for: .token) {
+            request.setValue("Bearer " + token, forHTTPHeaderField: "Authorization")
+        }
         
         // Configure session
         let configuration = URLSessionConfiguration.ephemeral

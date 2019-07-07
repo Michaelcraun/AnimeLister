@@ -12,7 +12,7 @@ enum NewsFeedEndPoint: EndPoint {
     case news(page: Int)
     case post(id: Int)
     
-    var body: [String : Any]? {
+    var body: [String : Any?]? {
         switch self {
         case .news:
             return nil

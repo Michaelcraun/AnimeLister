@@ -55,9 +55,10 @@ class MessagesViewController: UIViewController {
         self.conversation = conversation
         
         super.init(nibName: nil, bundle: nil)
-        self.hidesKeyboardWhenTappedAround()
         self.view.backgroundColor = appTheme.backgroundColor
         self.title = currentUser.friends.contains(conversation.withUser) ? conversation.withUser.fullName : conversation.withUser.username
+        self.addKeyboardAdjustablility()
+        self.hidesKeyboardWhenTappedAround()
         
         setup()
         layoutView()
@@ -93,18 +94,6 @@ class MessagesViewController: UIViewController {
             attribute: .bottom,
             multiplier: 1.0,
             constant: 0)
-        
-        NotificationCenter.default.addObserver(
-            self,
-            selector: #selector(keyboardWillShow),
-            name: UIResponder.keyboardWillShowNotification,
-            object: nil)
-        
-        NotificationCenter.default.addObserver(
-            self,
-            selector: #selector(keyboardWillHide),
-            name: UIResponder.keyboardWillHideNotification,
-            object: nil)
     }
     
     private func layoutView() {
@@ -149,14 +138,14 @@ class MessagesViewController: UIViewController {
         
     }
     
-    @objc private func keyboardWillShow(notification: NSNotification) {
+    override func keyboardWillShow(_ notification: NSNotification) {
         if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
             messageContainerBottom.constant -= (keyboardSize.height + 10)
             view.updateConstraintsIfNeeded()
         }
     }
     
-    @objc private func keyboardWillHide(notification: NSNotification) {
+    override func keyboardWillHide(_ notification: NSNotification) {
         messageContainerBottom.constant = 0
         view.updateConstraintsIfNeeded()
     }

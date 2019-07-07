@@ -581,9 +581,13 @@ PODS:
     - MotionInterchange (~> 1.6)
   - MotionInterchange (1.6.0)
   - MotionTransitioning (5.0.0)
+  - YangMingShan (2.0.1):
+    - YangMingShan/YMSPhotoPicker (= 2.0.1)
+  - YangMingShan/YMSPhotoPicker (2.0.1)
 
 DEPENDENCIES:
   - MaterialComponents
+  - YangMingShan
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
@@ -593,6 +597,7 @@ SPEC REPOS:
     - MotionAnimator
     - MotionInterchange
     - MotionTransitioning
+    - YangMingShan
 
 SPEC CHECKSUMS:
   MaterialComponents: e31f67324695bb1b537e5eccaee62db07ac3d06b
@@ -601,7 +606,8 @@ SPEC CHECKSUMS:
   MotionAnimator: ee16aa30567c5bae0fb2750c132915829cfaaf8a
   MotionInterchange: ead0e3ae1f3a5fb539e289debbc7ae036160a10d
   MotionTransitioning: 23d25edc2f4606efb922403cbac6d81af37aa33a
+  YangMingShan: 561cfbb769e8cf679d3f23d8ae7030402ddb6495
 
-PODFILE CHECKSUM: c9ea0b47c71414dd996f15bd944011bfd08bb007
+PODFILE CHECKSUM: 58cf91b5dce3999ada248bd779c83df855f0d768
 
 COCOAPODS: 1.5.2

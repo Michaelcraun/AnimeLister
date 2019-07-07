@@ -24,13 +24,10 @@ class LoginViewController: UIViewController {
         return view
     }()
     
-    private let logoView: UIImageView = {
-        let view = UIImageView()
-        view.backgroundColor = theme.buttonColor
-        view.layer.cornerRadius = 75
-        view.layer.shadowColor = UIColor.black.cgColor
-        view.layer.shadowOffset = CGSize(width: 1, height: 1)
-        view.layer.shadowOpacity = 0.75
+    private let logoView: RoundedImageView = {
+        let view = RoundedImageView()
+        view.setImage(UIImage(named: "dbz"))
+        view.radius = 75
         return view
     }()
     
@@ -45,6 +42,7 @@ class LoginViewController: UIViewController {
     private let emailField: ALTextField = {
         let field = ALTextField()
         field.autocapitalizationType = .none
+        field.autocorrectionType = .no
         field.keyboardType = .emailAddress
         field.returnKeyType = .next
         field.tag = 0
@@ -64,6 +62,7 @@ class LoginViewController: UIViewController {
     let forgotPasswordLabel: UILabel = {
         let label = UILabel()
         label.font = theme.detailFont
+        label.isUserInteractionEnabled = true
         label.text = "FORGOT PASSWORD?"
         label.textColor = theme.textColor
         return label
@@ -97,12 +96,18 @@ class LoginViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.navigationController?.isNavigationBarHidden = true
         self.view.backgroundColor = appTheme.backgroundColor
+        self.addKeyboardAdjustablility()
         self.hidesKeyboardWhenTappedAround()
         
         layoutView()
         setup()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        authCoordinator?.navigationController.setNavigationBarHidden(true, animated: true)
     }
     
     private func setup() {
@@ -127,8 +132,6 @@ class LoginViewController: UIViewController {
         passwordFieldController.inlinePlaceholderFont = appTheme.detailFont
         passwordFieldController.placeholderText = "Password"
         passwordField.delegate = self
-        
-        emailField.becomeFirstResponder()
     }
     
     private func layoutView() {
@@ -142,8 +145,7 @@ class LoginViewController: UIViewController {
             to: insideView,
             top: insideView.topAnchor,
             centerX: insideView.centerXAnchor,
-            padding: .init(top: 100, left: 0, bottom: 0, right: 0),
-            size: .init(width: 150, height: 150))
+            padding: .init(top: 100, left: 0, bottom: 0, right: 0))
         
         titleLabel.anchor(
             to: insideView,
@@ -187,6 +189,19 @@ class LoginViewController: UIViewController {
             padding: .init(top: 15, left: 10, bottom: 10, right: 10))
     }
     
+//    override func keyboardWillShow(_ notification: NSNotification) {
+//        guard let userInfo = notification.userInfo, let frame = (userInfo[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue else { return }
+//        UIView.animate(withDuration: 0, delay: 0, options: .curveEaseOut, animations: {
+//            self.scrollView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: frame.height, right: 0)
+//        }, completion: nil)
+//    }
+//
+//    override func keyboardWillHide(_ notification: NSNotification) {
+//        UIView.animate(withDuration: 0, delay: 0, options: .curveEaseOut, animations: {
+//            self.scrollView.contentInset = .zero
+//        }, completion: nil)
+//    }
+    
     @objc private func forgotTapped() {
         authCoordinator?.navigateToForgotPassword()
     }
@@ -194,23 +209,33 @@ class LoginViewController: UIViewController {
     @objc private func signinTapped() {
         guard let email = emailField.text, email != "" else {
             emailFieldController?.showError("Email is required.")
+            emailField.becomeFirstResponder()
             return
         }
         
-        
+        emailFieldController.showError(nil)
         
         guard let password = passwordField.text, password != "" else {
             passwordFieldController?.showError("Password is required.")
+            passwordField.becomeFirstResponder()
             return
         }
         
+        passwordFieldController.showError(nil)
         
-        
-        authCoordinator?.navigateToMain()
+        login(email: email, password: password)
     }
     
     @objc private func signupTapped() {
         authCoordinator?.navigateToSignup()
+    }
+    
+    private func login(email: String, password: String) {
+        let endpoint = AuthorizationEndPoint.signin(email: email, password: password)
+        NetworkRequest.router.request(endpoint) { (data, response, error) in
+            // MARK: Must validate login here
+            self.authCoordinator?.navigateToMain()
+        }
     }
 }
 

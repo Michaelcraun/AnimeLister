@@ -10,6 +10,11 @@
 		24ECEAFA154701D250659C68 /* Pods_AnimeListerUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 048AD9F57307FB9B872BDD59 /* Pods_AnimeListerUITests.framework */; };
 		8033F5F2901AB221CF02F8DD /* Pods_AnimeListerTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6E85C9A2817298D99E423C6A /* Pods_AnimeListerTests.framework */; };
 		93C83F9F825251FDDCE5DD05 /* Pods_AnimeLister.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E18BBA71C1C30B6130E16517 /* Pods_AnimeLister.framework */; };
+		9B04FC5C22C69086006F70E2 /* SignupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B04FC5B22C69086006F70E2 /* SignupViewController.swift */; };
+		9B04FC5E22C69090006F70E2 /* ForgotViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B04FC5D22C69090006F70E2 /* ForgotViewController.swift */; };
+		9B04FC6022C6963F006F70E2 /* RoundedImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B04FC5F22C6963F006F70E2 /* RoundedImageView.swift */; };
+		9B04FC6222C7EE4E006F70E2 /* Alertable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B04FC6122C7EE4E006F70E2 /* Alertable.swift */; };
+		9B04FC6522C93885006F70E2 /* ImageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B04FC6422C93885006F70E2 /* ImageManager.swift */; };
 		9BF90E0622B906BE0068FD3E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BF90E0522B906BE0068FD3E /* AppDelegate.swift */; };
 		9BF90E0B22B906BE0068FD3E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9BF90E0922B906BE0068FD3E /* Main.storyboard */; };
 		9BF90E0E22B906BE0068FD3E /* AnimeLister.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 9BF90E0C22B906BE0068FD3E /* AnimeLister.xcdatamodeld */; };
@@ -83,6 +88,11 @@
 		6E85C9A2817298D99E423C6A /* Pods_AnimeListerTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AnimeListerTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		87CD40CA05F300C1C8A92A3F /* Pods-AnimeListerUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AnimeListerUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-AnimeListerUITests/Pods-AnimeListerUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		8DAB03F0F7B2512E48B4857C /* Pods-AnimeListerTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AnimeListerTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-AnimeListerTests/Pods-AnimeListerTests.debug.xcconfig"; sourceTree = "<group>"; };
+		9B04FC5B22C69086006F70E2 /* SignupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupViewController.swift; sourceTree = "<group>"; };
+		9B04FC5D22C69090006F70E2 /* ForgotViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotViewController.swift; sourceTree = "<group>"; };
+		9B04FC5F22C6963F006F70E2 /* RoundedImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedImageView.swift; sourceTree = "<group>"; };
+		9B04FC6122C7EE4E006F70E2 /* Alertable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alertable.swift; sourceTree = "<group>"; };
+		9B04FC6422C93885006F70E2 /* ImageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageManager.swift; sourceTree = "<group>"; };
 		9BF90E0222B906BE0068FD3E /* AnimeLister.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AnimeLister.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9BF90E0522B906BE0068FD3E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9BF90E0A22B906BE0068FD3E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -182,6 +192,14 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		9B04FC6322C9387C006F70E2 /* Managers */ = {
+			isa = PBXGroup;
+			children = (
+				9B04FC6422C93885006F70E2 /* ImageManager.swift */,
+			);
+			path = Managers;
+			sourceTree = "<group>";
+		};
 		9BF90DF922B906BE0068FD3E = {
 			isa = PBXGroup;
 			children = (
@@ -266,6 +284,8 @@
 			isa = PBXGroup;
 			children = (
 				9BF90E4022B908B00068FD3E /* LoginViewController.swift */,
+				9B04FC5D22C69090006F70E2 /* ForgotViewController.swift */,
+				9B04FC5B22C69086006F70E2 /* SignupViewController.swift */,
 			);
 			path = Authorization;
 			sourceTree = "<group>";
@@ -273,9 +293,11 @@
 		9BF90E4522B911250068FD3E /* Helper */ = {
 			isa = PBXGroup;
 			children = (
+				9B04FC6322C9387C006F70E2 /* Managers */,
 				9BF90E5722B92BC80068FD3E /* Component */,
 				9BF90E4922B9118F0068FD3E /* Store */,
 				9BF90E4622B9112B0068FD3E /* Extension */,
+				9B04FC6122C7EE4E006F70E2 /* Alertable.swift */,
 				9BF90E5322B91CF20068FD3E /* Settings.swift */,
 				9BF90E5122B91A450068FD3E /* Theme.swift */,
 			);
@@ -321,6 +343,7 @@
 			isa = PBXGroup;
 			children = (
 				9BF90E5822B92BE70068FD3E /* ALTextField.swift */,
+				9B04FC5F22C6963F006F70E2 /* RoundedImageView.swift */,
 			);
 			path = Component;
 			sourceTree = "<group>";
@@ -577,6 +600,7 @@
 				"${BUILT_PRODUCTS_DIR}/MotionAnimator/MotionAnimator.framework",
 				"${BUILT_PRODUCTS_DIR}/MotionInterchange/MotionInterchange.framework",
 				"${BUILT_PRODUCTS_DIR}/MotionTransitioning/MotionTransitioning.framework",
+				"${BUILT_PRODUCTS_DIR}/YangMingShan/YangMingShan.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
@@ -586,6 +610,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MotionAnimator.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MotionInterchange.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MotionTransitioning.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/YangMingShan.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -617,6 +642,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9B04FC5C22C69086006F70E2 /* SignupViewController.swift in Sources */,
 				9BF90E4822B911370068FD3E /* UIViewExt.swift in Sources */,
 				9BF90E6D22B95D150068FD3E /* NewsModels.swift in Sources */,
 				9BF90E7522B9601B0068FD3E /* MessageModels.swift in Sources */,
@@ -624,7 +650,9 @@
 				9BF90E4F22B9143D0068FD3E /* MainCoordinator.swift in Sources */,
 				9BF90E5F22B9516D0068FD3E /* NewsFeedViewController.swift in Sources */,
 				9BF90E8A22BA5F2F0068FD3E /* NSMutableDataExt.swift in Sources */,
+				9B04FC6222C7EE4E006F70E2 /* Alertable.swift in Sources */,
 				9BF90E5422B91CF20068FD3E /* Settings.swift in Sources */,
+				9B04FC5E22C69090006F70E2 /* ForgotViewController.swift in Sources */,
 				9BF90E4B22B911980068FD3E /* LocalStorage.swift in Sources */,
 				9BF90E3D22B9082C0068FD3E /* AppCoordinator.swift in Sources */,
 				9BF90E9722BAAEF80068FD3E /* MessagesViewController.swift in Sources */,
@@ -656,7 +684,9 @@
 				9BF90E6A22B95CA40068FD3E /* NewsFeedCell.swift in Sources */,
 				9BF90E6F22B95ED70068FD3E /* UserModels.swift in Sources */,
 				9BF90E9122BA66C90068FD3E /* NewsFeedEndPoint.swift in Sources */,
+				9B04FC6522C93885006F70E2 /* ImageManager.swift in Sources */,
 				9BF90E0622B906BE0068FD3E /* AppDelegate.swift in Sources */,
+				9B04FC6022C6963F006F70E2 /* RoundedImageView.swift in Sources */,
 				9BF90E7B22BA526B0068FD3E /* PostViewController.swift in Sources */,
 				9BF90E9922BBC0CD0068FD3E /* MessageCell.swift in Sources */,
 			);

@@ -70,8 +70,8 @@ enum Theme {
     
     var secondaryBackgroundColor: UIColor {
         switch self {
-        case .dark: return UIColor(red: 8 / 255, green: 0 / 255, blue: 63 / 255, alpha: 1.0)
-        case .light: return UIColor(red: 150 / 255, green: 140 / 255, blue: 219 / 255, alpha: 1.0)
+        case .dark: return UIColor(white: 0.1, alpha: 0.5)
+        case .light: return .white
         }
     }
     

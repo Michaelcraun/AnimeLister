@@ -6,15 +6,15 @@
 //  Copyright © 2019 Craunic Productions. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
 enum AuthorizationEndPoint: EndPoint {
     case forgotPassword(email: String)
     case resetPassword(email: String, code: String, newPassword: String)
     case signin(email: String, password: String)
-    case signup(email: String, password: String, username: String)
+    case signup(photo: UIImage?, firstName: String, lastName: String, email: String, password: String, username: String)
     
-    var body: [String : Any]? {
+    var body: [String : Any?]? {
         switch self {
         case .forgotPassword(let email):
             return ["email" : email]
@@ -22,8 +22,8 @@ enum AuthorizationEndPoint: EndPoint {
             return ["email" : email, "code" : code, "newPassword" : newPassword]
         case .signin(let email, let password):
             return ["email" : email, "password" : password]
-        case .signup(let email, let password, let username):
-            return ["email" : email, "password" : password, "username" : username]
+        case .signup(let photo, let firstName, let lastName, let email, let password, let username):
+            return ["photo" : photo, "firstName" : firstName, "lastName" : lastName, "email" : email, "password" : password, "username" : username]
         }
     }
     

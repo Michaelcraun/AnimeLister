@@ -97,3 +97,32 @@ extension UIView {
         }
     }
 }
+
+// MARK: - Animations
+extension UIView {
+    /// Adds a blur effect that stretches the screen
+    func addBackgroundEffect() {
+        let background = UIView()
+        background.backgroundColor = UIColor(white: 1.0, alpha: 0.5)
+        background.tag = 1001
+        background.fillTo(self)
+    }
+    
+    /// Fades the alpha of a given view to a specific value over a specific duration
+    /// - parameter alpha: A CGFloat value of the desired alpha value
+    /// - parameter duration: A TimeInterval value of the desired duration
+    func fadeAlphaTo(_ alpha: CGFloat, withDuration duration: TimeInterval) {
+        UIView.animate(withDuration: duration) {
+            self.alpha = alpha
+        }
+    }
+    
+    /// Fades the alpha of a given view to 0.0 then removes it from the superview
+    func fadeAlphaOut() {
+        UIView.animate(withDuration: 0.2, animations: {
+            self.alpha = 0
+        }, completion: { (finished) in
+            self.removeFromSuperview()
+        })
+    }
+}
