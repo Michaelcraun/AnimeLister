@@ -6,7 +6,29 @@
 //  Copyright © 2019 Craunic Productions. All rights reserved.
 //
 
-import Foundation
+import UIKit
+
+protocol NetworkRequestDelegate: class {
+    func didEncounterError(_ code: Int?, error: Error?)
+}
+
+extension NetworkRequestDelegate where Self: UIViewController {
+    func didEncounterError(_ code: Int?, error: Error?) {
+        guard let code = code else {
+            if let error = error {
+                showAlert(.general(title: "Unknown Error", message: error.localizedDescription), withActions: [])
+            }
+            return
+        }
+        
+        let networkError = NetworkError(code)
+        if networkError == .invalidToken {
+            // Should log user out and show login vc
+        } else {
+            showAlert(.serverError(error: networkError), withActions: [])
+        }
+    }
+}
 
 class NetworkRequest {
     static let router = NetworkRequest()
@@ -14,7 +36,9 @@ class NetworkRequest {
     private var currentTask: URLSessionTask?
     private var suspendedTasks: [URLSessionTask]?
     
-    func request<T: EndPoint>(_ endpoint: T, completion: @escaping (Data?, URLResponse?, Error?) -> Void) {
+    var delegate: NetworkRequestDelegate?
+    
+    func request<T: EndPoint>(_ endpoint: T, completion: @escaping (Decodable?) -> Void) {
         suspendCurrentTaskIfNeeded()
         
         // Configure URL
@@ -35,18 +59,31 @@ class NetworkRequest {
         let configuration = URLSessionConfiguration.ephemeral
         let session = URLSession(configuration: configuration, delegate: nil, delegateQueue: OperationQueue.main)
         currentTask = session.dataTask(with: request, completionHandler: { (data, response, error) in
-            if error == nil {
-                if let data = data {
-                    print("NetworkRequest: Completed with data and no error!")
-                    completion(data, response, error)
-                } else {
-                    print("NetworkRequest: Completed with no data or error...")
-                    completion(nil, nil, nil)
-                }
-            } else {
-                print("NetworkRequest: Completed with error...")
-                completion(nil, nil, error)
+            guard let response = response as? HTTPURLResponse else {
+                let error = "Could not get a response." as? Error
+                completion(nil)
+                self.delegate?.didEncounterError(nil, error: error)
+                self.resumeSuspendedTasksIfNeeded()
+                return
             }
+            
+            guard let error = error else {
+                switch response.statusCode {
+                case 200:
+                    endpoint.parse(data: data!, completion: { (data) in
+                        completion(data)
+                        self.resumeSuspendedTasksIfNeeded()
+                    })
+                default:
+                    completion(nil)
+                    self.delegate?.didEncounterError(response.statusCode, error: NetworkError(response.statusCode))
+                    self.resumeSuspendedTasksIfNeeded()
+                }
+                return
+            }
+            
+            completion(nil)
+            self.delegate?.didEncounterError(response.statusCode, error: error)
             self.resumeSuspendedTasksIfNeeded()
         })
         currentTask?.resume()

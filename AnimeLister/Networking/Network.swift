@@ -46,6 +46,32 @@ enum NetworkEnvironment {
     }
 }
 
+enum NetworkError: Error {
+    case invalidToken
+    case unknown
+    
+    var code: Int {
+        switch self {
+        case .invalidToken: return 401
+        default: return -1
+        }
+    }
+    
+    var description: String {
+        switch self {
+        case .invalidToken: return "Found invalid token."
+        case .unknown: return "An unknown error occured."
+        }
+    }
+    
+    init(_ code: Int) {
+        switch code {
+        case 401: self = .invalidToken
+        default: self = .unknown
+        }
+    }
+}
+
 enum RefreshType {
     case bottom
     case pull

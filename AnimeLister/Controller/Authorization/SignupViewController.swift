@@ -70,7 +70,6 @@ class SignupViewController: UIViewController {
         let field = ALTextField()
         field.autocapitalizationType = .none
         field.isSecureTextEntry = true
-        field.keyboardType = .emailAddress
         field.returnKeyType = .next
         field.tag = 4
         return field
@@ -80,7 +79,6 @@ class SignupViewController: UIViewController {
         let field = ALTextField()
         field.autocapitalizationType = .none
         field.isSecureTextEntry = true
-        field.keyboardType = .emailAddress
         field.returnKeyType = .next
         field.tag = 5
         return field
@@ -319,7 +317,7 @@ class SignupViewController: UIViewController {
             password: password,
             username: username)
         
-        NetworkRequest.router.request(endpoint) { (data, response, error) in
+        NetworkRequest.router.request(endpoint) { (data) in
             // MARK: Confirm results of request
             self.authorizationCoordinator?.navigateToLogin()
         }
@@ -368,7 +366,6 @@ extension SignupViewController: UITextFieldDelegate {
 
 extension SignupViewController: ImageManagerDelegate {
     func imageManager(didFinishWith image: UIImage) {
-        print("in SignupVC.imageManager(didFinishWith:\(image))")
         profileImageView.setImage(image)
     }
     

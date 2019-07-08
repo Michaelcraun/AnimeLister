@@ -232,7 +232,7 @@ class LoginViewController: UIViewController {
     
     private func login(email: String, password: String) {
         let endpoint = AuthorizationEndPoint.signin(email: email, password: password)
-        NetworkRequest.router.request(endpoint) { (data, response, error) in
+        NetworkRequest.router.request(endpoint) { (data) in
             // MARK: Must validate login here
             self.authCoordinator?.navigateToMain()
         }

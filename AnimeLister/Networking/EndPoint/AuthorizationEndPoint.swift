@@ -9,16 +9,16 @@
 import UIKit
 
 enum AuthorizationEndPoint: EndPoint {
-    case forgotPassword(email: String)
-    case resetPassword(email: String, code: String, newPassword: String)
+    case forgot(email: String)
+    case reset(email: String, code: String, newPassword: String)
     case signin(email: String, password: String)
     case signup(photo: UIImage?, firstName: String, lastName: String, email: String, password: String, username: String)
     
     var body: [String : Any?]? {
         switch self {
-        case .forgotPassword(let email):
+        case .forgot(let email):
             return ["email" : email]
-        case .resetPassword(let email, let code, let newPassword):
+        case .reset(let email, let code, let newPassword):
             return ["email" : email, "code" : code, "newPassword" : newPassword]
         case .signin(let email, let password):
             return ["email" : email, "password" : password]
@@ -33,10 +33,18 @@ enum AuthorizationEndPoint: EndPoint {
     
     var path: String {
         switch self {
-        case .forgotPassword: return "/auth/forgot"
-        case .resetPassword: return "/auth/reset"
+        case .forgot: return "/auth/forgot"
+        case .reset: return "/auth/reset"
         case .signin: return "/auth/signin"
         case .signup: return "/auth/signup"
         }
+    }
+    
+    func parse(data: Data, completion: (Decodable?) -> Void) {
+        if let user = try? JSONDecoder().decode(User.self, from: data) {
+            completion(user)
+        }
+        
+        completion(nil)
     }
 }

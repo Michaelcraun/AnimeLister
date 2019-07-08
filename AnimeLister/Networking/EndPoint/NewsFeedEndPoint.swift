@@ -31,4 +31,8 @@ enum NewsFeedEndPoint: EndPoint {
         case .post(let id): return "/post/\(id)"
         }
     }
+    
+    func parse(data: Data, completion: @escaping (Decodable?) -> Void) {
+        
+    }
 }

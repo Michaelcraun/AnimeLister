@@ -69,51 +69,38 @@ class NewsFeedViewController: UITableViewController {
     
     private func listNews(from refreshType: RefreshType) {
         let newsRequest = NewsFeedEndPoint.news(page: page)
-        NetworkRequest.router.request(newsRequest) { (data, response, error) in
+        NetworkRequest.router.request(newsRequest) { (data) in
             self.refreshControl?.endRefreshing()
-            
-            guard let response = response as? HTTPURLResponse else {
-                print("NEWS: Could not parse response as HTTPURLResponse...")
+            guard let newsInfo = data as? News else {
+                print("NEWS: Could not parse data...")
                 return
             }
             
-            switch response.statusCode {
-            case 200:
-                do {
-                    let newsInfo = try JSONDecoder().decode(News.self, from: data!)
-                    
-                    switch refreshType {
-                    case .bottom:
-                        if self.page < newsInfo.lastPage {
-                            self.page = newsInfo.lastPage
-                            self.shouldFetchMore = false
-                            self.listNews(from: .bottom)
-                        } else if self.page == newsInfo.lastPage {
-                            self.posts = newsInfo.data
-                            self.page = self.page - 1 > 0 ? self.page - 1 : 0
-                            self.shouldFetchMore = self.page > 1
-                        } else {
-                            self.posts += newsInfo.data
-                            self.page = self.page - 1 > 0 ? self.page - 1 : 0
-                            self.shouldFetchMore = self.page > 1
-                        }
-                    case .pull:
-                        if self.page < newsInfo.lastPage {
-                            self.page = newsInfo.lastPage
-                            self.shouldFetchMore = false
-                            self.listNews(from: .bottom)
-                        } else if self.page == newsInfo.lastPage {
-                            self.posts = newsInfo.data
-                            self.page = self.page - 1 > 0 ? self.page - 1 : 0
-                            self.shouldFetchMore = self.page > 1
-                        }
-                    }
-                } catch let error {
-                    print("NEWS: There was an error parsing news data:", error)
+            switch refreshType {
+            case .bottom:
+                if self.page < newsInfo.lastPage {
+                    self.page = newsInfo.lastPage
+                    self.shouldFetchMore = false
+                    self.listNews(from: .bottom)
+                } else if self.page == newsInfo.lastPage {
+                    self.posts = newsInfo.data
+                    self.page = self.page - 1 > 0 ? self.page - 1 : 0
+                    self.shouldFetchMore = self.page > 1
+                } else {
+                    self.posts += newsInfo.data
+                    self.page = self.page - 1 > 0 ? self.page - 1 : 0
+                    self.shouldFetchMore = self.page > 1
                 }
-            default:
-                print("NEWS: Error obtaining news:", error ?? "nil", "with status code:", response.statusCode)
-                break
+            case .pull:
+                if self.page < newsInfo.lastPage {
+                    self.page = newsInfo.lastPage
+                    self.shouldFetchMore = false
+                    self.listNews(from: .bottom)
+                } else if self.page == newsInfo.lastPage {
+                    self.posts = newsInfo.data
+                    self.page = self.page - 1 > 0 ? self.page - 1 : 0
+                    self.shouldFetchMore = self.page > 1
+                }
             }
         }
     }

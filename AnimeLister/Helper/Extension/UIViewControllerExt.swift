@@ -28,3 +28,5 @@ extension UIViewController: Themeable {
     
     @objc func keyboardWillHide(_ notification: NSNotification) {  }
 }
+
+extension UIViewController: NetworkRequestDelegate {  }
