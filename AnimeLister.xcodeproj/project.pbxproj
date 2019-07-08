@@ -15,6 +15,7 @@
 		9B04FC6022C6963F006F70E2 /* RoundedImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B04FC5F22C6963F006F70E2 /* RoundedImageView.swift */; };
 		9B04FC6222C7EE4E006F70E2 /* Alertable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B04FC6122C7EE4E006F70E2 /* Alertable.swift */; };
 		9B04FC6522C93885006F70E2 /* ImageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B04FC6422C93885006F70E2 /* ImageManager.swift */; };
+		9B2DAA9722D2C30600E4A8BB /* MessagesEndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B2DAA9622D2C30600E4A8BB /* MessagesEndPoint.swift */; };
 		9BF90E0622B906BE0068FD3E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BF90E0522B906BE0068FD3E /* AppDelegate.swift */; };
 		9BF90E0B22B906BE0068FD3E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9BF90E0922B906BE0068FD3E /* Main.storyboard */; };
 		9BF90E0E22B906BE0068FD3E /* AnimeLister.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 9BF90E0C22B906BE0068FD3E /* AnimeLister.xcdatamodeld */; };
@@ -93,6 +94,7 @@
 		9B04FC5F22C6963F006F70E2 /* RoundedImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedImageView.swift; sourceTree = "<group>"; };
 		9B04FC6122C7EE4E006F70E2 /* Alertable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alertable.swift; sourceTree = "<group>"; };
 		9B04FC6422C93885006F70E2 /* ImageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageManager.swift; sourceTree = "<group>"; };
+		9B2DAA9622D2C30600E4A8BB /* MessagesEndPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessagesEndPoint.swift; sourceTree = "<group>"; };
 		9BF90E0222B906BE0068FD3E /* AnimeLister.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AnimeLister.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9BF90E0522B906BE0068FD3E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9BF90E0A22B906BE0068FD3E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -198,6 +200,30 @@
 				9B04FC6422C93885006F70E2 /* ImageManager.swift */,
 			);
 			path = Managers;
+			sourceTree = "<group>";
+		};
+		9B2DAA9322D2C0E400E4A8BB /* Anime List */ = {
+			isa = PBXGroup;
+			children = (
+				9BF90E6022B951820068FD3E /* AnimeListViewController.swift */,
+			);
+			path = "Anime List";
+			sourceTree = "<group>";
+		};
+		9B2DAA9422D2C0EC00E4A8BB /* Manga List */ = {
+			isa = PBXGroup;
+			children = (
+				9BF90E6222B9518E0068FD3E /* MangaListViewController.swift */,
+			);
+			path = "Manga List";
+			sourceTree = "<group>";
+		};
+		9B2DAA9522D2C0F400E4A8BB /* Search */ = {
+			isa = PBXGroup;
+			children = (
+				9BF90E6422B951980068FD3E /* SearchViewController.swift */,
+			);
+			path = Search;
 			sourceTree = "<group>";
 		};
 		9BF90DF922B906BE0068FD3E = {
@@ -330,11 +356,11 @@
 			isa = PBXGroup;
 			children = (
 				9BF90E3E22B9088D0068FD3E /* HomeViewController.swift */,
-				9BF90E6822B95C930068FD3E /* NewsFeed */,
+				9BF90E6822B95C930068FD3E /* News Feed */,
 				9BF90E8122BA55330068FD3E /* Messages */,
-				9BF90E6022B951820068FD3E /* AnimeListViewController.swift */,
-				9BF90E6222B9518E0068FD3E /* MangaListViewController.swift */,
-				9BF90E6422B951980068FD3E /* SearchViewController.swift */,
+				9B2DAA9322D2C0E400E4A8BB /* Anime List */,
+				9B2DAA9422D2C0EC00E4A8BB /* Manga List */,
+				9B2DAA9522D2C0F400E4A8BB /* Search */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -348,14 +374,14 @@
 			path = Component;
 			sourceTree = "<group>";
 		};
-		9BF90E6822B95C930068FD3E /* NewsFeed */ = {
+		9BF90E6822B95C930068FD3E /* News Feed */ = {
 			isa = PBXGroup;
 			children = (
 				9BF90E5E22B9516D0068FD3E /* NewsFeedViewController.swift */,
 				9BF90E7A22BA526B0068FD3E /* PostViewController.swift */,
 				9BF90E6922B95CA40068FD3E /* NewsFeedCell.swift */,
 			);
-			path = NewsFeed;
+			path = "News Feed";
 			sourceTree = "<group>";
 		};
 		9BF90E6B22B95CFD0068FD3E /* Model */ = {
@@ -405,6 +431,7 @@
 			children = (
 				9BF90E8722BA5AE50068FD3E /* EndPoint.swift */,
 				9BF90E8E22BA600D0068FD3E /* AuthorizationEndPoint.swift */,
+				9B2DAA9622D2C30600E4A8BB /* MessagesEndPoint.swift */,
 				9BF90E9022BA66C80068FD3E /* NewsFeedEndPoint.swift */,
 			);
 			path = EndPoint;
@@ -652,6 +679,7 @@
 				9BF90E8A22BA5F2F0068FD3E /* NSMutableDataExt.swift in Sources */,
 				9B04FC6222C7EE4E006F70E2 /* Alertable.swift in Sources */,
 				9BF90E5422B91CF20068FD3E /* Settings.swift in Sources */,
+				9B2DAA9722D2C30600E4A8BB /* MessagesEndPoint.swift in Sources */,
 				9B04FC5E22C69090006F70E2 /* ForgotViewController.swift in Sources */,
 				9BF90E4B22B911980068FD3E /* LocalStorage.swift in Sources */,
 				9BF90E3D22B9082C0068FD3E /* AppCoordinator.swift in Sources */,

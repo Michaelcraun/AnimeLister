@@ -32,7 +32,7 @@ enum NewsFeedEndPoint: EndPoint {
         }
     }
     
-    func parse(data: Data, completion: @escaping (Decodable?) -> Void) {
+    func decode(data: Data, completion: @escaping (Decodable?) -> Void) {
         
     }
 }

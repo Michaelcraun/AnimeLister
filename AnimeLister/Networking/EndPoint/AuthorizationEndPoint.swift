@@ -40,7 +40,7 @@ enum AuthorizationEndPoint: EndPoint {
         }
     }
     
-    func parse(data: Data, completion: (Decodable?) -> Void) {
+    func decode(data: Data, completion: (Decodable?) -> Void) {
         if let user = try? JSONDecoder().decode(User.self, from: data) {
             completion(user)
         }

@@ -171,7 +171,7 @@ class NewsFeedCell: UITableViewCell, Themeable {
         sourceLabel.text = post.source ?? ""
         commentLabel.text = post.text
         likeLabel.text = "\(post.__meta__.likes) Likes".singularOrPluralRepresentaion
-        shareLabel.text = "\(post.__meta__.shares) Shares".singularOrPluralRepresentaion
+//        shareLabel.text = "\(post.__meta__.shares) Shares".singularOrPluralRepresentaion
         
         // MARK: Test data. Should pull image from BE.
         if let image = UIImage(named: post.photo) {
@@ -182,6 +182,5 @@ class NewsFeedCell: UITableViewCell, Themeable {
     
     private func updateImageHeight() {
         postImageHeight.constant = 200
-//        postImageView.updateConstraints()
     }
 }

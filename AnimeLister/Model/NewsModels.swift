@@ -46,11 +46,9 @@ class Post: Decodable {
 
 class PostMeta: Decodable {
     let likes: Int
-    let shares: Int
     
     init(likes: Int, shares: Int) {
         self.likes = likes
-        self.shares = shares
     }
 }
 

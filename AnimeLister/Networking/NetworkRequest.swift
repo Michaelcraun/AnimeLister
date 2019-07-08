@@ -70,7 +70,7 @@ class NetworkRequest {
             guard let error = error else {
                 switch response.statusCode {
                 case 200:
-                    endpoint.parse(data: data!, completion: { (data) in
+                    endpoint.decode(data: data!, completion: { (data) in
                         completion(data)
                         self.resumeSuspendedTasksIfNeeded()
                     })

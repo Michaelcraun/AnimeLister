@@ -13,7 +13,7 @@ protocol EndPoint {
     var bodyData: Data { get }
     var method: HTTPMethod { get }
     var path: String { get }
-    func parse(data: Data, completion: @escaping (Decodable?) -> Void)
+    func decode(data: Data, completion: @escaping (Decodable?) -> Void)
 }
 
 extension EndPoint {
