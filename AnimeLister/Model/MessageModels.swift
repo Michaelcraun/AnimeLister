@@ -27,7 +27,7 @@ class MessagesUserList: Decodable {
 
 class Conversation: Decodable {
     let withUser: User
-    let messages: [Message]
+    var messages: [Message]
     
     init(withUser: User, messages: [Message]) {
         self.withUser = withUser
@@ -47,6 +47,14 @@ class Message: Decodable {
         self.text = text
         self.meta = meta
     }
+}
+
+class MessageList: Decodable {
+    let page: Int
+    let perPage: Int
+    let total: Int
+    let lastPage: Int
+    let messages: [Message]
 }
 
 class MessageMeta: Decodable {

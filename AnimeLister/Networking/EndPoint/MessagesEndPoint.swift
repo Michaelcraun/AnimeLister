@@ -9,7 +9,7 @@
 import Foundation
 
 enum MessagesEndPoint: EndPoint {
-    case messages(userID: Int)
+    case messages(userID: Int, page: Int)
     case messagesList(page: Int)
     case send(userID: Int, message: String)
     
@@ -32,7 +32,7 @@ enum MessagesEndPoint: EndPoint {
     
     var path: String {
         switch self {
-        case .messages(let userID): return "/messages?id=\(userID)"
+        case .messages(let userID, let page): return "/messages?id=\(userID)&page=\(page)"
         case .messagesList(let page): return "/messages/all?page=\(page)"
         case .send: return "/message"
         }

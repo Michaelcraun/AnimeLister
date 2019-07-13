@@ -46,7 +46,9 @@ class MessagesViewController: UIViewController {
         return view
     }()
     
-    private var conversation: Conversation!
+    private var conversation: Conversation
+    private var page: Int = 1
+    private var shouldFetchMore: Bool = false
     private var messageFieldController: MDCTextInputControllerOutlined!
     private var messageContainerBottom: NSLayoutConstraint!
     private let reuseID: String = "messageCell"
@@ -66,6 +68,12 @@ class MessagesViewController: UIViewController {
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+//        fetchMessages()
     }
     
     private func setup() {
@@ -152,6 +160,31 @@ class MessagesViewController: UIViewController {
 }
 
 extension MessagesViewController: UITableViewDataSource, UITableViewDelegate {
+    private func fetchMessages() {
+        let endpoint = MessagesEndPoint.messages(userID: conversation.withUser.id, page: page)
+        NetworkRequest.router.request(endpoint) { (messages) in
+            guard let messageList = messages as? MessageList else { return }
+            if self.page == 1 {
+                self.conversation.messages = messageList.messages
+            } else {
+                self.conversation.messages += messageList.messages
+            }
+            
+            if self.page == messageList.lastPage {
+                self.page = 1
+                self.shouldFetchMore = false
+            } else if self.page < messageList.lastPage {
+                self.page += 1
+                self.shouldFetchMore = true
+            }
+            
+            DispatchQueue.main.async {
+                self.messagesTableView.reloadData()
+                self.view.setNeedsUpdateConstraints()
+            }
+        }
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return conversation.messages.count
     }
@@ -162,19 +195,27 @@ extension MessagesViewController: UITableViewDataSource, UITableViewDelegate {
         cell.layoutSubviews()
         return cell
     }
+    
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        if indexPath.row == 0 && shouldFetchMore {
+            fetchMessages()
+        }
+    }
 }
 
 extension MessagesViewController: UITextFieldDelegate {
     func textFieldDidBeginEditing(_ textField: UITextField) {
-        
-    }
-    
-    func textFieldDidEndEditing(_ textField: UITextField) {
-        
+        sendButton.isEnabled = textField.hasText == true ? true : false
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        
+        guard let text = textField.text, text != "" else { return false }
+        let endpoint = MessagesEndPoint.send(userID: conversation.withUser.id, message: text)
+        NetworkRequest.router.request(endpoint) { (data) in
+            self.page = 1
+            self.shouldFetchMore = true
+            self.fetchMessages()
+        }
         
         return true
     }
