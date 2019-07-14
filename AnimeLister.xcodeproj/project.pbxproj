@@ -400,10 +400,10 @@
 			isa = PBXGroup;
 			children = (
 				9B0BE4CF22D9E07D00A2FBC5 /* ModelProtocol.swift */,
-				9B0BE4D122DB851200A2FBC5 /* Media.swift */,
 				9B0BE4CB22D9DF0000A2FBC5 /* AnimeModels.swift */,
 				9BF90E7F22BA54DD0068FD3E /* AuthorizationModels.swift */,
 				9B0BE4CD22D9DF0C00A2FBC5 /* MangaModels.swift */,
+				9B0BE4D122DB851200A2FBC5 /* Media.swift */,
 				9BF90E7422B9601B0068FD3E /* MessageModels.swift */,
 				9BF90E6C22B95D150068FD3E /* NewsModels.swift */,
 				9BF90E6E22B95ED70068FD3E /* UserModels.swift */,

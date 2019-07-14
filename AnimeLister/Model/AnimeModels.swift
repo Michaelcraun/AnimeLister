@@ -8,12 +8,18 @@
 
 import Foundation
 
-class Anime: Decodable {
-    let _rating: String
-    let _type: String
-    let id: Int
-    let name: String
-    let meta: AnimeMeta
+class Anime: Decodable, Model {
+    var _rating: String
+    var _type: String
+    var characters: [Character]
+    var id: Int
+    var licensor: Licensor?
+    var name: String
+    var meta: AnimeMeta
+    var photo: String
+    var producer: Producer?
+    var studio: Studio?
+    var thumbnail: String
     
     var rating: MediaRating.Anime? {
         return MediaRating.Anime(_rating)
@@ -22,6 +28,44 @@ class Anime: Decodable {
     var type: MediaType.Anime? {
         return MediaType.Anime(_type)
     }
+}
+
+class Actor: Decodable, Model {
+    var anime: [Anime]
+    var characters: [Character]
+    var id: Int
+    var firstName: String
+    var lastName: String
+    var name: String
+    var photo: String
+    var thumbnail: String
+}
+
+class Licensor: Decodable, Model {
+    var anime: [Anime]
+    var id: Int
+    var name: String
+    var photo: String
+    var staff: [StaffMember]
+    var thumbnail: String
+}
+
+class Producer: Decodable, Model {
+    var anime: [Anime]
+    var id: Int
+    var name: String
+    var photo: String
+    var staff: [StaffMember]
+    var thumbnail: String
+}
+
+class Studio: Decodable, Model {
+    var anime: [Anime]
+    var id: Int
+    var name: String
+    var photo: String
+    var staff: [StaffMember]
+    var thumbnail: String
 }
 
 class AnimeMeta: Decodable {

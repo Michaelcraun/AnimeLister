@@ -9,7 +9,10 @@
 import Foundation
 
 protocol Model {
-    
+    var id: Int { get set }
+    var name: String { get set }
+    var photo: String { get set }
+    var thumbnail: String { get set }
 }
 
 protocol ModelList {

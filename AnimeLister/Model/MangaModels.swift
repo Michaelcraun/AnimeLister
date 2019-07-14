@@ -8,12 +8,18 @@
 
 import Foundation
 
-class Manga: Decodable {
-    let _rating: String
-    let _type: String
-    let id: Int
-    let meta: MangaMeta
-    let name: String
+class Manga: Decodable, Model {
+    var _rating: String
+    var _type: String
+    var author: StaffMember?
+    var id: Int
+    var meta: MangaMeta
+    var name: String
+    var photo: String
+    var publishDate: String
+    var serializer: Serializer?
+    var thumbnail: String
+    var volumes: Int?
     
     var rating: MediaRating.Manga? {
         return MediaRating.Manga(_rating)
@@ -24,9 +30,18 @@ class Manga: Decodable {
     }
 }
 
+class Serializer: Decodable, Model {
+    var id: Int
+    var manga: [Manga]
+    var name: String
+    var photo: String
+    var staff: [StaffMember]
+    var thumbnail: String
+}
+
 class MangaMeta: Decodable {
-    let likes: Int
-    let rating: Double
+    var likes: Int
+    var rating: Double
 }
 
 class MangaList: Decodable, ModelList {
@@ -38,12 +53,16 @@ class MangaList: Decodable, ModelList {
     var manga: [Manga]
 }
 
-class UserManga: Decodable {
-    let _status: String
-    let manga: Manga
-    let meta: UserMangaMeta
-    let rating: Double
-    let progress: Progress
+class UserManga: Decodable, Model {
+    var _status: String
+    var id: Int
+    var manga: Manga
+    var meta: UserMangaMeta
+    var name: String
+    var photo: String
+    var rating: Double
+    var progress: Progress
+    var thumbnail: String
     
     var status: MediaStatus.Manga? {
         return MediaStatus.Manga(_status)

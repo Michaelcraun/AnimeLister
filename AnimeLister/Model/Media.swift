@@ -8,6 +8,16 @@
 
 import Foundation
 
+class Character: Decodable, Model {
+    var actor: Actor?
+    var anime: [Anime]
+    var id: Int
+    var manga: [Manga]
+    var name: String
+    var photo: String
+    var thumbnail: String
+}
+
 enum MediaRating {
     enum Anime {
         case movie(rating: Movie?)
@@ -217,6 +227,7 @@ enum MediaType {
     enum Anime {
         case hentai
         case movie
+        case ona
         case ova
         case tv
         
@@ -224,6 +235,7 @@ enum MediaType {
             switch type {
             case "hentai": self = .hentai
             case "movie": self = .movie
+            case "ona": self = .ona
             case "ova": self = .ova
             case "tv": self = .tv
             default: return nil
@@ -234,6 +246,7 @@ enum MediaType {
             switch self {
             case .hentai: return "hentai"
             case .movie: return "movie"
+            case .ona: return "ona"
             case .ova: return "ova"
             case .tv: return "tv"
             }
@@ -259,4 +272,17 @@ enum MediaType {
             }
         }
     }
+}
+
+class StaffMember: Decodable, Model {
+    var anime: [Anime]
+    var id: Int
+    var licensors: [Licensor]
+    var manga: [Manga]
+    var name: String
+    var photo: String
+    var producers: [Producer]
+    var serializers: [Serializer]
+    var studios: [Studio]
+    var thumbnail: String
 }
