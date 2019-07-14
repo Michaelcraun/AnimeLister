@@ -8,11 +8,11 @@
 
 import Foundation
 
-class MessagesUserList: Decodable {
-    let total: Int
-    let perPage: Int
-    let page: Int
-    let lastPage: Int
+class MessagesUserList: Decodable, ModelList {
+    var total: Int
+    var perPage: Int
+    var lastPage: Int
+    var page: Int
     
     let data: [User]
     
@@ -49,11 +49,12 @@ class Message: Decodable {
     }
 }
 
-class MessageList: Decodable {
-    let page: Int
-    let perPage: Int
-    let total: Int
-    let lastPage: Int
+class MessageList: Decodable, ModelList {
+    var page: Int
+    var perPage: Int
+    var lastPage: Int
+    var total: Int
+    
     let messages: [Message]
 }
 

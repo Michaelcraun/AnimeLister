@@ -53,29 +53,11 @@ class UserMeta: Decodable {
     }
 }
 
-class UserAnime: Decodable {
-    let status: String
-    let progress: Int
-    let total: Int
-    let rating: Double
+class UserList: Decodable, ModelList {
+    var total: Int
+    var perPage: Int
+    var lastPage: Int
+    var page: Int
     
-    let anime: Anime
-}
-
-class UserManga: Decodable {
-    let status: String
-    let progress: Int
-    let total: Int
-    let rating: Double
-    
-    let manga: Manga
-}
-
-class UserList: Decodable {
-    let total: Int
-    let perPage: Int
-    let page: Int
-    let lastPage: Int
-    
-    let data: [User]
+    let users: [User]
 }

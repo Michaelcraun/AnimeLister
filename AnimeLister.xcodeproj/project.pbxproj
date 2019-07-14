@@ -15,6 +15,13 @@
 		9B04FC6022C6963F006F70E2 /* RoundedImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B04FC5F22C6963F006F70E2 /* RoundedImageView.swift */; };
 		9B04FC6222C7EE4E006F70E2 /* Alertable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B04FC6122C7EE4E006F70E2 /* Alertable.swift */; };
 		9B04FC6522C93885006F70E2 /* ImageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B04FC6422C93885006F70E2 /* ImageManager.swift */; };
+		9B0BE4C622D9DE9C00A2FBC5 /* AnimeEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B0BE4C522D9DE9C00A2FBC5 /* AnimeEndpoint.swift */; };
+		9B0BE4C822D9DEA600A2FBC5 /* MangaEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B0BE4C722D9DEA600A2FBC5 /* MangaEndpoint.swift */; };
+		9B0BE4CA22D9DEB400A2FBC5 /* SearchEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B0BE4C922D9DEB400A2FBC5 /* SearchEndpoint.swift */; };
+		9B0BE4CC22D9DF0000A2FBC5 /* AnimeModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B0BE4CB22D9DF0000A2FBC5 /* AnimeModels.swift */; };
+		9B0BE4CE22D9DF0C00A2FBC5 /* MangaModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B0BE4CD22D9DF0C00A2FBC5 /* MangaModels.swift */; };
+		9B0BE4D022D9E07D00A2FBC5 /* ModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B0BE4CF22D9E07D00A2FBC5 /* ModelProtocol.swift */; };
+		9B0BE4D222DB851200A2FBC5 /* Media.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B0BE4D122DB851200A2FBC5 /* Media.swift */; };
 		9B2DAA9722D2C30600E4A8BB /* MessagesEndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B2DAA9622D2C30600E4A8BB /* MessagesEndPoint.swift */; };
 		9BF90E0622B906BE0068FD3E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BF90E0522B906BE0068FD3E /* AppDelegate.swift */; };
 		9BF90E0B22B906BE0068FD3E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9BF90E0922B906BE0068FD3E /* Main.storyboard */; };
@@ -45,7 +52,6 @@
 		9BF90E6A22B95CA40068FD3E /* NewsFeedCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BF90E6922B95CA40068FD3E /* NewsFeedCell.swift */; };
 		9BF90E6D22B95D150068FD3E /* NewsModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BF90E6C22B95D150068FD3E /* NewsModels.swift */; };
 		9BF90E6F22B95ED70068FD3E /* UserModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BF90E6E22B95ED70068FD3E /* UserModels.swift */; };
-		9BF90E7122B95FFE0068FD3E /* MediaModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BF90E7022B95FFE0068FD3E /* MediaModels.swift */; };
 		9BF90E7522B9601B0068FD3E /* MessageModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BF90E7422B9601B0068FD3E /* MessageModels.swift */; };
 		9BF90E7722B9BFEA0068FD3E /* StringExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BF90E7622B9BFEA0068FD3E /* StringExt.swift */; };
 		9BF90E7922B9C01B0068FD3E /* DateExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BF90E7822B9C01B0068FD3E /* DateExt.swift */; };
@@ -94,6 +100,13 @@
 		9B04FC5F22C6963F006F70E2 /* RoundedImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedImageView.swift; sourceTree = "<group>"; };
 		9B04FC6122C7EE4E006F70E2 /* Alertable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alertable.swift; sourceTree = "<group>"; };
 		9B04FC6422C93885006F70E2 /* ImageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageManager.swift; sourceTree = "<group>"; };
+		9B0BE4C522D9DE9C00A2FBC5 /* AnimeEndpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimeEndpoint.swift; sourceTree = "<group>"; };
+		9B0BE4C722D9DEA600A2FBC5 /* MangaEndpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MangaEndpoint.swift; sourceTree = "<group>"; };
+		9B0BE4C922D9DEB400A2FBC5 /* SearchEndpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchEndpoint.swift; sourceTree = "<group>"; };
+		9B0BE4CB22D9DF0000A2FBC5 /* AnimeModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimeModels.swift; sourceTree = "<group>"; };
+		9B0BE4CD22D9DF0C00A2FBC5 /* MangaModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MangaModels.swift; sourceTree = "<group>"; };
+		9B0BE4CF22D9E07D00A2FBC5 /* ModelProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelProtocol.swift; sourceTree = "<group>"; };
+		9B0BE4D122DB851200A2FBC5 /* Media.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Media.swift; sourceTree = "<group>"; };
 		9B2DAA9622D2C30600E4A8BB /* MessagesEndPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessagesEndPoint.swift; sourceTree = "<group>"; };
 		9BF90E0222B906BE0068FD3E /* AnimeLister.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AnimeLister.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9BF90E0522B906BE0068FD3E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -130,7 +143,6 @@
 		9BF90E6922B95CA40068FD3E /* NewsFeedCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsFeedCell.swift; sourceTree = "<group>"; };
 		9BF90E6C22B95D150068FD3E /* NewsModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsModels.swift; sourceTree = "<group>"; };
 		9BF90E6E22B95ED70068FD3E /* UserModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModels.swift; sourceTree = "<group>"; };
-		9BF90E7022B95FFE0068FD3E /* MediaModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediaModels.swift; sourceTree = "<group>"; };
 		9BF90E7422B9601B0068FD3E /* MessageModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageModels.swift; sourceTree = "<group>"; };
 		9BF90E7622B9BFEA0068FD3E /* StringExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExt.swift; sourceTree = "<group>"; };
 		9BF90E7822B9C01B0068FD3E /* DateExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateExt.swift; sourceTree = "<group>"; };
@@ -387,11 +399,14 @@
 		9BF90E6B22B95CFD0068FD3E /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				9BF90E7022B95FFE0068FD3E /* MediaModels.swift */,
+				9B0BE4CF22D9E07D00A2FBC5 /* ModelProtocol.swift */,
+				9B0BE4D122DB851200A2FBC5 /* Media.swift */,
+				9B0BE4CB22D9DF0000A2FBC5 /* AnimeModels.swift */,
+				9BF90E7F22BA54DD0068FD3E /* AuthorizationModels.swift */,
+				9B0BE4CD22D9DF0C00A2FBC5 /* MangaModels.swift */,
 				9BF90E7422B9601B0068FD3E /* MessageModels.swift */,
 				9BF90E6C22B95D150068FD3E /* NewsModels.swift */,
 				9BF90E6E22B95ED70068FD3E /* UserModels.swift */,
-				9BF90E7F22BA54DD0068FD3E /* AuthorizationModels.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -430,9 +445,12 @@
 			isa = PBXGroup;
 			children = (
 				9BF90E8722BA5AE50068FD3E /* EndPoint.swift */,
+				9B0BE4C522D9DE9C00A2FBC5 /* AnimeEndpoint.swift */,
 				9BF90E8E22BA600D0068FD3E /* AuthorizationEndPoint.swift */,
+				9B0BE4C722D9DEA600A2FBC5 /* MangaEndpoint.swift */,
 				9B2DAA9622D2C30600E4A8BB /* MessagesEndPoint.swift */,
 				9BF90E9022BA66C80068FD3E /* NewsFeedEndPoint.swift */,
+				9B0BE4C922D9DEB400A2FBC5 /* SearchEndpoint.swift */,
 			);
 			path = EndPoint;
 			sourceTree = "<group>";
@@ -672,6 +690,7 @@
 				9B04FC5C22C69086006F70E2 /* SignupViewController.swift in Sources */,
 				9BF90E4822B911370068FD3E /* UIViewExt.swift in Sources */,
 				9BF90E6D22B95D150068FD3E /* NewsModels.swift in Sources */,
+				9B0BE4C622D9DE9C00A2FBC5 /* AnimeEndpoint.swift in Sources */,
 				9BF90E7522B9601B0068FD3E /* MessageModels.swift in Sources */,
 				9BF90E5922B92BE70068FD3E /* ALTextField.swift in Sources */,
 				9BF90E4F22B9143D0068FD3E /* MainCoordinator.swift in Sources */,
@@ -687,9 +706,12 @@
 				9BF90E6122B951820068FD3E /* AnimeListViewController.swift in Sources */,
 				9BF90E3722B907100068FD3E /* Coordinator.swift in Sources */,
 				9BF90E9322BA9E1C0068FD3E /* MessagesUserCell.swift in Sources */,
+				9B0BE4C822D9DEA600A2FBC5 /* MangaEndpoint.swift in Sources */,
 				9BF90E4122B908B00068FD3E /* LoginViewController.swift in Sources */,
 				9BF90E7E22BA53D70068FD3E /* ProfileViewController.swift in Sources */,
 				9BF90E8C22BA5F6C0068FD3E /* Network.swift in Sources */,
+				9B0BE4CE22D9DF0C00A2FBC5 /* MangaModels.swift in Sources */,
+				9B0BE4CA22D9DEB400A2FBC5 /* SearchEndpoint.swift in Sources */,
 				9BF90E6522B951980068FD3E /* SearchViewController.swift in Sources */,
 				9BF90E3B22B907AC0068FD3E /* AuthorizationCoordinator.swift in Sources */,
 				9BF90E3F22B9088D0068FD3E /* HomeViewController.swift in Sources */,
@@ -697,15 +719,17 @@
 				9BF90E8F22BA600D0068FD3E /* AuthorizationEndPoint.swift in Sources */,
 				9BF90E8022BA54DD0068FD3E /* AuthorizationModels.swift in Sources */,
 				9BF90E6322B9518E0068FD3E /* MangaListViewController.swift in Sources */,
+				9B0BE4D222DB851200A2FBC5 /* Media.swift in Sources */,
 				9BF90E4D22B913A60068FD3E /* URLExt.swift in Sources */,
 				9BF90E8622BA5ADA0068FD3E /* NetworkRequest.swift in Sources */,
 				9BF90E6722B952800068FD3E /* MessagesListViewController.swift in Sources */,
+				9B0BE4CC22D9DF0000A2FBC5 /* AnimeModels.swift in Sources */,
 				9BF90E8422BA5ACF0068FD3E /* NetworkManager.swift in Sources */,
 				9BF90E8822BA5AE50068FD3E /* EndPoint.swift in Sources */,
 				9BF90E5222B91A450068FD3E /* Theme.swift in Sources */,
+				9B0BE4D022D9E07D00A2FBC5 /* ModelProtocol.swift in Sources */,
 				9BF90E5D22B935960068FD3E /* MaterialComponentsExt.swift in Sources */,
 				9BF90E0E22B906BE0068FD3E /* AnimeLister.xcdatamodeld in Sources */,
-				9BF90E7122B95FFE0068FD3E /* MediaModels.swift in Sources */,
 				9BF90E7722B9BFEA0068FD3E /* StringExt.swift in Sources */,
 				9BF90E7922B9C01B0068FD3E /* DateExt.swift in Sources */,
 				9BF90E5622B91F5C0068FD3E /* UIViewControllerExt.swift in Sources */,

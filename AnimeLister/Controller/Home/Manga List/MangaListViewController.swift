@@ -8,7 +8,7 @@
 
 import UIKit
 
-class MangaListViewController: UIViewController {
+class MangaListViewController: UITableViewController {
     
     
     

@@ -8,11 +8,11 @@
 
 import Foundation
 
-class News: Decodable {
-    let total: Int
-    let perPage: Int
-    let page: Int
-    let lastPage: Int
+class News: Decodable, ModelList {
+    var total: Int
+    var perPage: Int
+    var lastPage: Int
+    var page: Int
     
     let data: [Post]
 }
@@ -24,7 +24,8 @@ class Post: Decodable {
     let text: String
     let source: String?
     let link: String?
-    let __meta__: PostMeta
+    
+    let meta: PostMeta
     
     // User information
     let user: User
@@ -38,7 +39,7 @@ class Post: Decodable {
         self.text = text
         self.source = source
         self.link = link
-        self.__meta__ = __meta__
+        self.meta = __meta__
         self.user = user
         self.createdAt = createdAt
     }

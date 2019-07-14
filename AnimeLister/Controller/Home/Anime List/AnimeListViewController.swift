@@ -8,7 +8,7 @@
 
 import UIKit
 
-class AnimeListViewController: UIViewController {
+class AnimeListViewController: UITableViewController {
     
     
     

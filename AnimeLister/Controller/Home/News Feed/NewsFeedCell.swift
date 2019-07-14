@@ -170,7 +170,7 @@ class NewsFeedCell: UITableViewCell, Themeable {
         timeLabel.text = post.createdAt.date?.printableDate
         sourceLabel.text = post.source ?? ""
         commentLabel.text = post.text
-        likeLabel.text = "\(post.__meta__.likes) Likes".singularOrPluralRepresentaion
+        likeLabel.text = "\(post.meta.likes) Likes".singularOrPluralRepresentaion
 //        shareLabel.text = "\(post.__meta__.shares) Shares".singularOrPluralRepresentaion
         
         // MARK: Test data. Should pull image from BE.
