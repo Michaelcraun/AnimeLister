@@ -8,7 +8,7 @@
 
 import Foundation
 
-class Anime: Decodable, Model {
+struct Anime: Decodable, Model {
     var _rating: String
     var _type: String
     var characters: [Character]
@@ -20,6 +20,7 @@ class Anime: Decodable, Model {
     var producer: Producer?
     var studio: Studio?
     var thumbnail: String
+    var totalEpisodes: Int
     
     var rating: MediaRating.Anime? {
         return MediaRating.Anime(_rating)
@@ -30,7 +31,7 @@ class Anime: Decodable, Model {
     }
 }
 
-class Actor: Decodable, Model {
+struct Actor: Decodable, Model {
     var anime: [Anime]
     var characters: [Character]
     var id: Int
@@ -41,7 +42,7 @@ class Actor: Decodable, Model {
     var thumbnail: String
 }
 
-class Licensor: Decodable, Model {
+struct Licensor: Decodable, Model {
     var anime: [Anime]
     var id: Int
     var name: String
@@ -50,7 +51,7 @@ class Licensor: Decodable, Model {
     var thumbnail: String
 }
 
-class Producer: Decodable, Model {
+struct Producer: Decodable, Model {
     var anime: [Anime]
     var id: Int
     var name: String
@@ -59,7 +60,7 @@ class Producer: Decodable, Model {
     var thumbnail: String
 }
 
-class Studio: Decodable, Model {
+struct Studio: Decodable, Model {
     var anime: [Anime]
     var id: Int
     var name: String
@@ -68,12 +69,12 @@ class Studio: Decodable, Model {
     var thumbnail: String
 }
 
-class AnimeMeta: Decodable {
+struct AnimeMeta: Decodable {
     let likes: Int
     let rating: Double
 }
 
-class AnimeList: Decodable, ModelList {
+struct AnimeList: Decodable, ModelList {
     var page: Int
     var perPage: Int
     var lastPage: Int
@@ -82,9 +83,10 @@ class AnimeList: Decodable, ModelList {
     var anime: [Anime]
 }
 
-class UserAnime: Decodable {
+struct UserAnime: Decodable {
     let _status: String
     let anime: Anime
+    let id: Int
     let meta: UserAnimeMeta
     let progress: Progress
     let rating: Double
@@ -95,8 +97,14 @@ class UserAnime: Decodable {
     }
 }
 
-class UserAnimeMeta: Decodable {
+struct UserAnimeMeta: Decodable {
     var endDate: String
     var startDate: String
     var updatedDate: String
+}
+
+struct UserAnimeList {
+    var statusType: MediaStatus.Anime
+    var anime: [UserAnime]
+    var isOpen: Bool
 }

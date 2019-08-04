@@ -24,15 +24,4 @@ extension String {
         default: return self
         }
     }
-    
-//    func removingLastCharacter() -> String {
-//        var newType: String = ""
-//        let lastIndex = self.count
-//
-//        for index in 0..<self.count {
-//            
-//        }
-//
-//        return newType
-//    }
 }

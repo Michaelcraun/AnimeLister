@@ -171,6 +171,13 @@ enum MediaStatus {
         case onHold
         case planToWatch
         
+        static let list: [MediaStatus.Anime] = [
+            .completed,
+            .currentlyWatching,
+            .dropped,
+            .onHold,
+            .planToWatch]
+        
         init?(_ status: String) {
             switch status {
             case "completed": self = .completed

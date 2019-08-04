@@ -68,6 +68,16 @@ extension UIView {
         if size.width != 0 { widthAnchor.constraint(equalToConstant: size.width).isActive = true }
         if size.height != 0 { heightAnchor.constraint(equalToConstant: size.height).isActive = true }
     }
+    
+    /// Removes all child views from the view
+    func removeChildren() {
+        for subview in self.subviews {
+            for child in subview.subviews {
+                child.removeFromSuperview()
+            }
+            subview.removeFromSuperview()
+        }
+    }
 }
 
 // MARK: - Keyboard Controls

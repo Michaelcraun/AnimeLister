@@ -29,4 +29,9 @@ class Progress: Decodable {
     var progress: Double {
         return Double(current) / Double(total)
     }
+    
+    init(current: Int, total: Int) {
+        self.current = current
+        self.total = total
+    }
 }
