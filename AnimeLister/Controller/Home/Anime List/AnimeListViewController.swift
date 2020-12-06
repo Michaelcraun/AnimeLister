@@ -237,17 +237,30 @@ extension AnimeListViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if indexPath.row == 0 {
             animeList[indexPath.section].isOpen = !animeList[indexPath.section].isOpen
+            tableView.reloadSections(IndexSet(integer: indexPath.section), with: .none)
         } else {
             print("User selected an anime to view!")
+            tableView.deselectRow(at: indexPath, animated: true)
         }
-        
-        tableView.reloadSections(IndexSet(integer: indexPath.section), with: .none)
+    }
+    
+    override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
+        if indexPath.row == 0 {
+            return false
+        } else {
+            return true
+        }
     }
 }
 
 extension AnimeListViewController: AnimeCellDelegate {
     func animeCell(_ cell: AnimeCell, wasLongPressed: Bool) {
+        guard let anime = cell.data.anime else { return }
+        let editModal = EditAnimeModal(anime: anime)
+        editModal.modalPresentationStyle = .overCurrentContext
+        editModal.modalTransitionStyle = .crossDissolve
         
+        present(editModal, animated: true, completion: nil)
     }
     
     func moreWasTappedForAnimeCell(_ cell: AnimeCell) {

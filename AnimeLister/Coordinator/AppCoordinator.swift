@@ -23,9 +23,7 @@ class AppCoordinator: Coordinator {
     
     func start() {
         guard let _ = LocalStorage.store.get(for: .token) else {
-            let authorizationCoordinator = AuthorizationCoordinator(navigationController: self.navigationController)
-            authorizationCoordinator.appCoordinator = self
-            authorizationCoordinator.start()
+            navigateToLogin()
             return
         }
         

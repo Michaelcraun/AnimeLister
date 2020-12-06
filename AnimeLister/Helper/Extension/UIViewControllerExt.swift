@@ -25,7 +25,6 @@ extension UIViewController: Themeable {
     }
     
     @objc func keyboardWillShow(_ notification: NSNotification) {  }
-    
     @objc func keyboardWillHide(_ notification: NSNotification) {  }
 }
 

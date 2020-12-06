@@ -189,18 +189,18 @@ class LoginViewController: UIViewController {
             padding: .init(top: 15, left: 10, bottom: 10, right: 10))
     }
     
-//    override func keyboardWillShow(_ notification: NSNotification) {
-//        guard let userInfo = notification.userInfo, let frame = (userInfo[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue else { return }
-//        UIView.animate(withDuration: 0, delay: 0, options: .curveEaseOut, animations: {
-//            self.scrollView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: frame.height, right: 0)
-//        }, completion: nil)
-//    }
-//
-//    override func keyboardWillHide(_ notification: NSNotification) {
-//        UIView.animate(withDuration: 0, delay: 0, options: .curveEaseOut, animations: {
-//            self.scrollView.contentInset = .zero
-//        }, completion: nil)
-//    }
+    override func keyboardWillShow(_ notification: NSNotification) {
+        guard let userInfo = notification.userInfo, let frame = (userInfo[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue else { return }
+        UIView.animate(withDuration: 0, delay: 0, options: .curveEaseOut, animations: {
+            self.scrollView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: frame.height, right: 0)
+        }, completion: nil)
+    }
+    
+    override func keyboardWillHide(_ notification: NSNotification) {
+        UIView.animate(withDuration: 0, delay: 0, options: .curveEaseOut, animations: {
+            self.scrollView.contentInset = .zero
+        }, completion: nil)
+    }
     
     @objc private func forgotTapped() {
         authCoordinator?.navigateToForgotPassword()
